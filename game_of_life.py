@@ -35,11 +35,8 @@ def get_num_neighbours(cell, board):
     return num_neighbours
 
 
+# Checks if the given cell lives in the next iteration or not
 def new_value(cell, num_neighbours):
-    # print("Cell_value: {}, Number of neighbours: {}".format(cell, num_neighbours))
-    # time.sleep(1)
-    # print("")
-
     if cell == 1:
         if num_neighbours < 2:
             return int(0)
@@ -64,7 +61,6 @@ def advance_game(board):
 
             new_board[i][j] = new_value(board[i][j], num_neighbours)
 
-    # print(pd.DataFrame(new_board))
     return new_board
 
 
@@ -77,11 +73,14 @@ def run_game():
     board[3][2] = 1
     board[3][3] = 1
     board[3][4] = 1
-    board[2][3] = 1
+
+    # board[5][5] = 1
+    # board[6][5] = 1
+    # board[6][4] = 1
 
     # print(pd.DataFrame(board))
 
-    while get_living_cells(board):
+    while True:
         print(pd.DataFrame(board))
         print("")
         board = advance_game(board)
