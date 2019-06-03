@@ -69,10 +69,6 @@ def run_game():
     board_size_y = 10
     board = create_board(board_size_x, board_size_y)
 
-    board[3][2] = 1
-    board[3][3] = 1
-    board[3][4] = 1
-
     board[4][3] = 1
     board[3][5] = 1
     board[4][5] = 1
@@ -81,7 +77,7 @@ def run_game():
 
     # print(pd.DataFrame(board))
 
-    while True:
+    while get_living_cells(board):
         print(pd.DataFrame(board))
         print("")
         board = advance_game(board)
