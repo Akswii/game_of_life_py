@@ -1,5 +1,4 @@
 import pandas as pd
-import time
 
 
 # Creates a board with the given x and y dimensions.
@@ -39,14 +38,14 @@ def get_num_neighbours(cell, board):
 def new_value(cell, num_neighbours):
     if cell == 1:
         if num_neighbours < 2:
-            return int(0)
-        elif 2 >= num_neighbours <= 3:
-            return int(1)
+            return 0
+        elif num_neighbours == 2 or num_neighbours == 3:
+            return 1
         elif num_neighbours > 3:
-            return int(0)
+            return 0
     elif cell == 0:
         if num_neighbours == 3:
-            return int(1)
+            return 1
     return 0
 
 
@@ -74,9 +73,11 @@ def run_game():
     board[3][3] = 1
     board[3][4] = 1
 
-    # board[5][5] = 1
-    # board[6][5] = 1
-    # board[6][4] = 1
+    board[4][3] = 1
+    board[3][5] = 1
+    board[4][5] = 1
+    board[5][5] = 1
+    board[5][4] = 1
 
     # print(pd.DataFrame(board))
 
@@ -84,7 +85,16 @@ def run_game():
         print(pd.DataFrame(board))
         print("")
         board = advance_game(board)
-        time.sleep(1)
+        input("Press Enter to continue...")
 
 
 run_game()
+
+# Endless life
+# board[3][2] = 1
+# board[2][2] = 1
+# board[2][3] = 1
+
+# board[4][5] = 1
+# board[5][5] = 1
+# board[5][4] = 1
